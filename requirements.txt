@@ -1,0 +1,47 @@
+backcall==0.2.0
+certifi==2021.5.30
+click==8.0.1
+cloudpickle @ file:///home/conda/feedstock_root/build_artifacts/cloudpickle_1598400192773/work
+colorama==0.4.4
+cycler==0.10.0
+decorator==5.0.9
+Flask==2.0.1
+imbalanced-learn==0.8.0
+importlib-metadata==4.6.1
+ipython==7.25.0
+ipython-genutils==0.2.0
+itsdangerous==2.0.1
+jedi==0.18.0
+Jinja2==3.0.1
+joblib @ file:///home/conda/feedstock_root/build_artifacts/joblib_1612898609989/work
+kiwisolver==1.3.1
+llvmlite==0.36.0
+MarkupSafe==2.0.1
+matplotlib==3.4.2
+matplotlib-inline==0.1.2
+numba @ file:///D:/bld/numba_1623568760029/work
+numpy @ file:///D:/bld/numpy_1626648573548/work
+pandas @ file:///D:/bld/pandas_1625236732352/work
+parso==0.8.2
+pickle-mixin==1.0.2
+pickleshare==0.7.5
+Pillow==8.3.1
+prompt-toolkit==3.0.19
+Pygments==2.9.0
+pyparsing==2.4.7
+python-dateutil @ file:///home/conda/feedstock_root/build_artifacts/python-dateutil_1626286286081/work
+pytz @ file:///home/conda/feedstock_root/build_artifacts/pytz_1612179539967/work
+scikit-learn @ file:///D:/bld/scikit-learn_1619628804911/work
+scipy @ file:///C:/bld/scipy_1624825048748/work
+seaborn==0.11.1
+shap @ file:///D:/bld/shap_1619696971651/work
+six @ file:///home/conda/feedstock_root/build_artifacts/six_1620240208055/work
+slicer @ file:///home/conda/feedstock_root/build_artifacts/slicer_1608146800664/work
+threadpoolctl @ file:///home/conda/feedstock_root/build_artifacts/threadpoolctl_1626092076920/work
+tqdm @ file:///home/conda/feedstock_root/build_artifacts/tqdm_1625664838498/work
+traitlets==5.0.5
+typing-extensions==3.10.0.0
+wcwidth==0.2.5
+Werkzeug==2.0.1
+wincertstore==0.2
+zipp==3.5.0

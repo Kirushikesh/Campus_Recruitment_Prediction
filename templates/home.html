@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recruitment Prediction</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+</head>
+
+<body>
+    <div style="color:blue">
+        <form action="{{ url_for('predict')}}" method="post">
+            <h2>Campus Recruitment Prediction</h2>
+            
+            <h3>Gender</h3><select name="Gender" id="gender" required="required">
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+            </select>
+            
+            <h3>SSC Percentage</h3>
+            <input id="ssc_p" name="SSC Percentage" type="number" required min="0" max="100" step="0.01">
+
+            <h3>HSC Percentage</h3>
+            <input id="hsc_p" name="HSC Percentage" type="number" required min="0" max="100" step="0.01">
+
+            <h3>Degree Percentage</h3>
+            <input id="degree_p" name="Degree Percentage" type="number" required min="0" max="100" step="0.01">
+
+            <h3>Work Experience</h3><select name="Work Experience" id="workex" required="required">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <h3>Employability test percentage</h3>
+            <input id="etest_p" name="Employability test percentage" type="number" required min="0" max="100" step="0.01">
+
+            <h3>Specialisation</h3><select name="Specialisation" id="specialisation" required="required">
+                <option value="0">Mkt&Fin</option>
+                <option value="1">Mkt&HR</option>
+            </select>
+
+            <h3>MBA Percentage</h3>
+            <input id="mba_p" name="MBA Percentage" type="number" min="0" max="100" step="0.01" required>
+
+            <br><br><br><button id="sub" type="submit ">Predict the CR</button>
+            <br>
+        </form>
+        <br><br><h3>{{ prediction_text }}<h3>
+    </div>
+</body>
+</html>
