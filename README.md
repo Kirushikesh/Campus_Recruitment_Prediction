@@ -47,4 +47,16 @@ The Whole Project is divided into 2 sections
 13. References
 
 # Few Images during Model Creation
+![attribute_histogram_plots](https://user-images.githubusercontent.com/49152921/139538177-26c0d916-9925-4236-80ac-529bf2e5e8a8.png)
 
+![Degree vs Recruitment](https://user-images.githubusercontent.com/49152921/139538182-64fc85e9-4248-4310-99f3-2eb7f3430a96.png)
+
+![Feature Importance](https://user-images.githubusercontent.com/49152921/139538186-01cb7d31-7543-4843-9398-cdf7805286dd.png)
+
+![Trained Decision Tree](https://user-images.githubusercontent.com/49152921/139538208-b01a4399-7d05-4a8a-b749-1bcab79fed64.png)
+
+![roc_curve_plot](https://user-images.githubusercontent.com/49152921/139538210-fcc5f44c-d339-4186-bf34-4f846e2d43d7.png)
+
+![SHAP Force Plot 1](https://user-images.githubusercontent.com/49152921/139538216-a0f64cb2-546c-4a1f-8fef-34d99dc05085.png)
+
+![Heroku_Webpage](https://user-images.githubusercontent.com/49152921/139538227-25b25f26-63f5-4000-85c5-264741de630f.png)
