@@ -5,7 +5,7 @@ The Whole Project is divided into 2 sections
 - Model Creation done in [CR_Machine_Learning.ipynb](https://github.com/Kirushikesh/Campus_Recruitment_Prediction/blob/main/CR_Machine_Learning.ipynb)
 - Real Time inference in [app.py](https://github.com/Kirushikesh/Campus_Recruitment_Prediction/blob/main/app.py)
 
-# Contents Done in Model Creation
+# Table of Content
 
 1. Problem Statement
 2. Understanding the dataset
@@ -45,5 +45,3 @@ The Whole Project is divided into 2 sections
 11. Further Work
 12. Conclusion and Future Work
 13. References
-
-The next step is deploying the learned model in Heroku for realtime inference done using the Flask framework. You can try the using https://recruitment-prediction.herokuapp.com/
