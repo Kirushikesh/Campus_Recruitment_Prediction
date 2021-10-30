@@ -47,10 +47,4 @@ The Whole Project is divided into 2 sections
 13. References
 
 # Few Images during Model Creation
-![Feature Importance](https://user-images.githubusercontent.com/49152921/139536332-2babd108-f1bc-4edb-9970-de18ea8f835d.png)
 
-![Trained Decision Tree](https://user-images.githubusercontent.com/49152921/139536343-679bf70a-ddd8-4d50-b92b-078ad6d470e0.png)
-
-![Degree vs Recruitment](https://user-images.githubusercontent.com/49152921/139536363-78a4570f-97cd-4305-acaa-24e66b64acb0.png)
-
-![roc_curve_plot](https://user-images.githubusercontent.com/49152921/139536371-a3d33c83-be90-4a58-90ac-8ec4d18a3269.png)
