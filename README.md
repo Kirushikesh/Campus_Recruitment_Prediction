@@ -2,7 +2,7 @@
 Building an classification model to check whether a candidate get placed in a campus recruitment or not.
 
 The Whole Project is divided into 2 sections
-- Model Creation done in [CR_Machine_Learning.ipynb](https://github.com/Kirushikesh/Campus_Recruitment_Prediction/blob/main/CR_Machine_Learning.ipynb)
+- Model Creation done in [Medium Blog](https://medium.com/@tempmail.krooz/professional-end2end-ml-pipeline-using-practical-example-11d2d3e1edbf)
 - Real Time inference in [app.py](https://github.com/Kirushikesh/Campus_Recruitment_Prediction/blob/main/app.py)
 
 # Table of Content
