@@ -1,9 +1,28 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request,flash
+from sklearn.base import BaseEstimator, TransformerMixin
 import pickle
 import numpy as np
+import pandas as pd
+
+ssc_ix, hsc_ix, degree_ix, mba_ix,etest_ix = 0, 1, 2, 4,3
+class CombinedAttributesAdder(BaseEstimator, TransformerMixin):
+    def __init__(self, add_college_score=True): # no *args or **kargs
+        self.add_college_score = add_college_score
+    def fit(self, X, y=None):
+        return self  # nothing else to do
+    def transform(self, X):
+        X=np.array(X)
+        synthetic1 = X[:, ssc_ix]*X[:, hsc_ix]*X[:, degree_ix]*X[:, mba_ix]
+        if self.add_college_score:
+            synthetic2 = X[:,etest_ix]*X[:, mba_ix]
+            return np.c_[X, synthetic1,synthetic2]
+        else:
+            return np.c_[X,synthetic1]
 
 app = Flask(__name__)
-model = pickle.load(open('logistic_regression.pkl', 'rb'))
+app.secret_key = '8f42a73054b1749f8f58848be5e6502c'
+
+model = pickle.load(open('classifier.pkl', 'rb'))
 
 @app.route('/',methods=['GET'])
 def Home():
@@ -12,24 +31,34 @@ def Home():
 @app.route("/predict", methods=['POST'])
 def predict():
     if request.method == 'POST':
-        gender=request.form['Gender']
-        ssc_p=request.form['SSC Percentage']
-        hsc_p=request.form['HSC Percentage']
-        degree_p=request.form['Degree Percentage']
-        workex=request.form['Work Experience']
-        etest_p=request.form['Employability test percentage']
-        specialisation=request.form['Specialisation']
-        mba_p=request.form['MBA Percentage']
+        name=request.form['First_name']+' '+request.form['Last_name']
+        gender=request.form['gender']
+        ssc_p=float(request.form['ssc p'])
+        ssc_boe=request.form['ssc boe']
+        hsc_p=float(request.form['hsc p'])
+        hsc_boe=request.form['hsc boe']
+        hsc_spec=request.form['hsc spec']
+        ug_p=float(request.form['ug p'])
+        ug_dt=request.form['ug dt']
+        pg_p=float(request.form['pg p'])
+        pg_spec=request.form['pg spec']
+        etest_p=float(request.form['etest p'])
+        workex=request.form['work ex']
         
-        prediction=model.predict([[int(gender),float(ssc_p),float(hsc_p),float(degree_p),int(workex),float(etest_p),int(specialisation),float(mba_p)]])
+        test=pd.DataFrame([[gender,ssc_p,ssc_boe,hsc_p, hsc_boe,hsc_spec,ug_p,ug_dt,workex,etest_p,pg_spec,pg_p]],
+                            columns=['gender', 'ssc_p', 'ssc_b', 'hsc_p', 'hsc_b', 'hsc_s', 'degree_p',
+                                    'degree_t', 'workex', 'etest_p', 'specialisation', 'mba_p'])
+    
+        prediction=model.predict(test)[0]
         
-        output=prediction[0]
-        if(output==1):
-            return render_template('home.html',prediction_text="Congrats the chances for you to get placed is high!!")
+        if(prediction==1):
+            flash(f"Congrats {name} the chances for you to get placed is high!!",'success')
+            return render_template('home.html')
         else:
-            return render_template('home.html',prediction_text="Based on your data the chance of getting recruited is low")
+            flash(f"Sorry {name} Based on your data the chance of getting recruited is low",'danger')
+            return render_template('home.html')
     else:
         return render_template('home.html')
 
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run()
