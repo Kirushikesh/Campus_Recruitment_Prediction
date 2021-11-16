@@ -1,52 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recruitment Prediction</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
-</head>
-
-<body>
-    <div style="color:blue">
-        <form action="{{ url_for('predict')}}" method="post">
-            <h2>Campus Recruitment Prediction</h2>
-            
-            <h3>Gender</h3><select name="Gender" id="gender" required="required">
-                <option value="1">Male</option>
-                <option value="0">Female</option>
-            </select>
-            
-            <h3>SSC Percentage</h3>
-            <input id="ssc_p" name="SSC Percentage" type="number" required min="0" max="100" step="0.01">
-
-            <h3>HSC Percentage</h3>
-            <input id="hsc_p" name="HSC Percentage" type="number" required min="0" max="100" step="0.01">
-
-            <h3>Degree Percentage</h3>
-            <input id="degree_p" name="Degree Percentage" type="number" required min="0" max="100" step="0.01">
-
-            <h3>Work Experience</h3><select name="Work Experience" id="workex" required="required">
-                <option value="1">Yes</option>
-                <option value="0">No</option>
-            </select>
-
-            <h3>Employability test percentage</h3>
-            <input id="etest_p" name="Employability test percentage" type="number" required min="0" max="100" step="0.01">
-
-            <h3>Specialisation</h3><select name="Specialisation" id="specialisation" required="required">
-                <option value="0">Mkt&Fin</option>
-                <option value="1">Mkt&HR</option>
-            </select>
-
-            <h3>MBA Percentage</h3>
-            <input id="mba_p" name="MBA Percentage" type="number" min="0" max="100" step="0.01" required>
-
-            <br><br><br><button id="sub" type="submit ">Predict the CR</button>
-            <br>
-        </form>
-        <br><br><h3>{{ prediction_text }}<h3>
-    </div>
-</body>
+<html>
+   <head>
+      <title>CR Prediction</title>
+      <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+   </head>
+   <body>
+      <div class="testbox">
+      <form action="{{ url_for('predict')}}" method="post">
+         <div class="banner">
+            <h1>Campus Recruitment Prediction</h1>
+         </div>
+         {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                {{ message }}
+                </div>
+            {% endfor %}
+            {% endif %}
+        {% endwith %}
+         <div class="item">
+            <label for="name">Name<span class="required">*</span></label>
+            <div class="city-item">
+               <input type="text" name="First_name" placeholder="First" />
+               <input type="text" name="Last_name" placeholder="Last" />
+            </div>
+         </div>
+         <div class="question">
+            <p>Gender:<span class="required">*</span></p>
+            <div class="question-answer">
+               <input type="radio" value="M" id="radio_1" name="gender" required/>
+               <label for="radio_1" class="radio"><span>Male</span></label>
+               <input type="radio" value="F" id="radio_2" name="gender" required/>
+               <label for="radio_2" class="radio"><span>Female</span></label>
+            </div>
+         </div>
+         <h5>1. SSC Information:</h5>
+         <div class="item">
+            <p>Percentage<span class="required">*</span></p>
+            <input type="number" required min="0" max="100" step="0.01" name="ssc p" required/>
+         </div>
+         <div class="question">
+            <p>Board of Education:<span class="required">*</span></p>
+            <div class="question-answer">
+               <input type="radio" value="Central" id="radio_3" name="ssc boe" required/>
+               <label for="radio_3" class="radio"><span>Central</span></label>
+               <input type="radio" value="Others" id="radio_4" name="ssc boe" required/>
+               <label for="radio_4" class="radio"><span>Others</span></label>
+            </div>
+         </div>
+         <h5>2. HSC Information:</h5>
+         <div class="item">
+            <p>Percentage<span class="required">*</span></p>
+            <input type="number" required min="0" max="100" step="0.01" name="hsc p" required/>
+         </div>
+         <div class="question">
+            <p>Board of Education:<span class="required">*</span></p>
+            <div class="question-answer">
+               <input type="radio" value="Central" id="radio_5" name="hsc boe" required/>
+               <label for="radio_5" class="radio"><span>Central</span></label>
+               <input type="radio" value="Others" id="radio_6" name="hsc boe" required/>
+               <label for="radio_6" class="radio"><span>Others</span></label>
+            </div>
+            <div class="question">
+               <p>Specialization:<span class="required">*</span></p>
+               <div class="question-answer">
+                  <input type="radio" value="Commerce" id="radio_7" name="hsc spec" required/>
+                  <label for="radio_7" class="radio"><span>Commerce</span></label>
+                  <input type="radio" value="Science" id="radio_8" name="hsc spec" required/>
+                  <label for="radio_8" class="radio"><span>Science</span></label>
+                  <input type="radio" value="Arts" id="radio_9" name="hsc spec" required/>
+                  <label for="radio_9" class="radio"><span>Arts</span></label>
+               </div>
+            </div>
+            <h5>3. UG Information:</h5>
+            <div class="item">
+               <p>Percentage<span class="required">*</span></p>
+               <input type="number" required min="0" max="100" step="0.01" name="ug p" required/>
+            </div>
+            <div class="question">
+               <p>Degree Type:<span class="required">*</span></p>
+               <div class="question-answer">
+                  <input type="radio" value="Sci&Tech" id="radio_10" name="ug dt" required/>
+                  <label for="radio_10" class="radio"><span>Sci&Tech</span></label>
+                  <input type="radio" value="Comm&Mgmt" id="radio_11" name="ug dt" required/>
+                  <label for="radio_11" class="radio"><span>Comm&Mgmt</span></label>
+                  <input type="radio" value="Others" id="radio_12" name="ug dt" required/>
+                  <label for="radio_12" class="radio"><span>Others</span></label>
+               </div>
+            </div>
+            <h5>3. PG Information( MBA ):</h5>
+            <div class="item">
+               <p>Percentage<span class="required">*</span></p>
+               <input type="number" required min="0" max="100" step="0.01" name="pg p" required/>
+            </div>
+            <div class="question">
+               <p>Specialization:<span class="required">*</span></p>
+               <div class="question-answer">
+                  <input type="radio" value="Mkt&Fin" id="radio_13" name="pg spec" required/>
+                  <label for="radio_13" class="radio"><span>Mkt&Fin</span></label>
+                  <input type="radio" value="Mkt&HR" id="radio_14" name="pg spec" required/>
+                  <label for="radio_14" class="radio"><span>Mkt&HR</span></label>
+               </div>
+            </div>
+            <div class="item">
+               <p>Employability Test Percentage<span class="required">*</span></p>
+               <input type="number" required min="0" max="100" step="0.01" name="etest p" required/>
+            </div>
+            <div class="question">
+               <p>Work Experience:<span class="required">*</span></p>
+               <div class="question-answer">
+                  <input type="radio" value="Yes" id="radio_15" name="work ex" required/>
+                  <label for="radio_15" class="radio"><span>Yes</span></label>
+                  <input type="radio" value="No" id="radio_16" name="work ex" required/>
+                  <label for="radio_16" class="radio"><span>No</span></label>
+               </div>
+            </div>
+            <div class="btn-block">
+               <button type="submit" href="/">Check</button>
+            </div>
+      </form>
+      </div>
+   </body>
 </html>
