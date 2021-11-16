@@ -4,7 +4,7 @@ cloudpickle==1.6.0
 colorama==0.4.4
 cycler==0.10.0
 Flask==2.0.1
-imbalanced-learn==0.7.0
+imbalanced-learn==0.6.2
 importlib-metadata==4.6.1
 itsdangerous==2.0.1
 Jinja2==3.0.1
