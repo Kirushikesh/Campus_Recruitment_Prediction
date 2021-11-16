@@ -59,4 +59,5 @@ The Whole Project is divided into 2 sections
 
 ![SHAP Force Plot 1](https://user-images.githubusercontent.com/49152921/139538216-a0f64cb2-546c-4a1f-8fef-34d99dc05085.png)
 
-![Heroku_Webpage](https://user-images.githubusercontent.com/49152921/139538227-25b25f26-63f5-4000-85c5-264741de630f.png)
+![Heroku Webpage](https://user-images.githubusercontent.com/49152921/141936096-049ff5b6-d4ca-441a-a4d1-544f3959c918.png)
+
