@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request,flash
+from flask import Flask, render_template, request,flash, jsonify
 from sklearn.base import BaseEstimator, TransformerMixin
 import pickle
 import numpy as np
@@ -59,6 +59,31 @@ def predict():
             return render_template('home.html')
     else:
         return render_template('home.html')
+
+@app.route("/result", methods=['POST'])
+def result():
+    data = request.get_json(force=True)
+
+    gender=data['gender']
+    ssc_p=float(data['ssc p'])
+    ssc_boe=data['ssc boe']
+    hsc_p=float(data['hsc p'])
+    hsc_boe=data['hsc boe']
+    hsc_spec=data['hsc spec']
+    ug_p=float(data['ug p'])
+    ug_dt=data['ug dt']
+    pg_p=float(data['pg p'])
+    pg_spec=data['pg spec']
+    etest_p=float(data['etest p'])
+    workex=data['work ex']
+    
+    test=pd.DataFrame([[gender,ssc_p,ssc_boe,hsc_p, hsc_boe,hsc_spec,ug_p,ug_dt,workex,etest_p,pg_spec,pg_p]],
+                        columns=['gender', 'ssc_p', 'ssc_b', 'hsc_p', 'hsc_b', 'hsc_s', 'degree_p',
+                                'degree_t', 'workex', 'etest_p', 'specialisation', 'mba_p'])
+
+    prediction=model.predict_proba(test)[0]
+
+    return jsonify({'Not Placed': prediction[0],'Placed': prediction[1]})
 
 if __name__=="__main__":
     app.run()
