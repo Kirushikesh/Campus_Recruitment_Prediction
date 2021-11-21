@@ -5,6 +5,8 @@ The Whole Project is divided into 2 sections
 - Model Creation done in [Medium Blog](https://medium.com/@tempmail.krooz/professional-end2end-ml-pipeline-using-practical-example-11d2d3e1edbf)
 - Real Time inference in [Medium Blog](https://medium.com/@tempmail.krooz/deploying-campus-recruitment-prediction-model-using-flask-f6b0509d0a33)
 
+The application is deployed in [Heroku](https://recruitment-prediction.herokuapp.com/)
+
 # Table of Content
 
 1. Problem Statement
